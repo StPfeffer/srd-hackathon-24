@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -49,228 +50,237 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            Hackathon24Theme {
             // A surface container using the 'background' color from the theme
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background
-            ) {
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            colors = topAppBarColors(
-                                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                                titleContentColor = MaterialTheme.colorScheme.primary,
-                            ),
-                            title = {
-                                Text("Top app bar")
-                            }
-                        )
-                    },
-                    bottomBar = {
-                        BottomAppBar(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer,
-                            contentColor = MaterialTheme.colorScheme.primary,
-                        ) {
-                            val navController = rememberNavController()
-                            Row(modifier = Modifier.fillMaxWidth()) {
-                                NavHost(navController = navController, startDestination = "main") {
-                                    composable("main") {
-                                        Button(onClick = { navController.navigate("teste") }) {
-                                            Icon(
-                                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                                                contentDescription = ""
-                                            )
-                                        }
-                                    }
-
-                                    composable("teste") {
-                                        Button(onClick = { navController.navigate("teste") }) {
-                                            Icon(
-                                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                                                contentDescription = ""
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                ) { paddingValues ->
-                    Column(modifier = Modifier.padding(paddingValues)) {
-                        ConstraintLayout {
-                            val (topImg, profile) = createRefs()
-
-                            Box(
-                                Modifier
-                                    .fillMaxWidth()
-                                    .height(245.dp)
-                                    .constrainAs(topImg) {
-                                        top.linkTo(parent.top)
-                                        start.linkTo(parent.start)
-                                    }
-                                    .background(
-                                        color = Color(android.graphics.Color.parseColor("#033F63")),
-                                        shape = RoundedCornerShape(
-                                            bottomEnd = 10.dp,
-                                            bottomStart = 10.dp
-                                        )
-                                    )
-                            )
-
-                            Row(
-                                Modifier
-                                    .padding(top = 48.dp, start = 24.dp, end = 24.dp)
-                                    .fillMaxWidth()
-                            ) {
-                                Column(
-                                    Modifier
-                                        .height(100.dp)
-                                        .padding(start = 14.dp)
-                                        .weight(0.7f),
-                                    verticalArrangement = Arrangement.Center,
-                                    horizontalAlignment = Alignment.Start
-                                ) {
-                                    Text(
-                                        text = "Hello",
-                                        color = androidx.compose.ui.graphics.Color.White,
-                                        fontSize = 18.sp,
-                                    )
-                                    Text(
-                                        text = "",
-                                        color = androidx.compose.ui.graphics.Color.White,
-                                        fontSize = 22.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        modifier = Modifier.padding(top = 14.dp)
-                                    )
-                                }
-                                Image(
-                                    painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                                    contentDescription = "profile image",
-                                    modifier = Modifier
-                                        .width(100.dp)
-                                        .height(100.dp)
-                                        .clickable { }
-                                )
-                            }
-
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.Center,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = 24.dp, start = 24.dp, end = 24.dp)
-                                    .shadow(3.dp, shape = RoundedCornerShape(20.dp))
-                                    .background(
-                                        color = androidx.compose.ui.graphics.Color.White,
-                                        shape = RoundedCornerShape(20.dp)
-                                    )
-                                    .constrainAs(profile) {
-                                        top.linkTo(topImg.bottom)
-                                        bottom.linkTo(topImg.bottom)
-                                        start.linkTo(parent.start)
-                                        end.linkTo(parent.end)
-                                    }
-                            )
-                            {
-                                Column(
-                                    modifier = Modifier
-                                        .padding(
-                                            top = 12.dp,
-                                            bottom = 12.dp,
-                                            end = 12.dp,
-                                            start = 8.dp
-                                        )
-                                        .height(90.dp)
-                                        .width(90.dp)
-                                        .background(
-                                            color = Color(android.graphics.Color.parseColor("#b6c2fe")),
-                                            shape = RoundedCornerShape(20.dp)
-                                        ),
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                                        contentDescription = "",
-                                        modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
-                                    )
-                                    Text(
-                                        text = "Video Call",
-                                        fontSize = 14.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        fontStyle = FontStyle.Italic,
-                                        color = Color(android.graphics.Color.parseColor("#5e3bee"))
-                                    )
-                                }
-
-                                Column(
-                                    modifier = Modifier
-                                        .padding(
-                                            top = 12.dp,
-                                            bottom = 12.dp,
-                                            end = 12.dp,
-                                            start = 8.dp
-                                        )
-                                        .height(90.dp)
-                                        .width(90.dp)
-                                        .background(
-                                            color = Color(android.graphics.Color.parseColor("#b6c2fe")),
-                                            shape = RoundedCornerShape(20.dp)
-                                        ),
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                                        contentDescription = "",
-                                        modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
-                                    )
-                                    Text(
-                                        text = "Notification",
-                                        fontSize = 14.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        fontStyle = FontStyle.Italic,
-                                        color = Color(android.graphics.Color.parseColor("#5e3bee"))
-                                    )
-                                }
-
-                                Column(
-                                    modifier = Modifier
-                                        .padding(
-                                            top = 12.dp,
-                                            bottom = 12.dp,
-                                            end = 12.dp,
-                                            start = 8.dp
-                                        )
-                                        .height(90.dp)
-                                        .width(90.dp)
-                                        .background(
-                                            color = Color(android.graphics.Color.parseColor("#b6c2fe")),
-                                            shape = RoundedCornerShape(20.dp)
-                                        ),
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                                        contentDescription = "",
-                                        modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
-                                    )
-                                    Text(
-                                        text = "Voice Call",
-                                        fontSize = 14.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        fontStyle = FontStyle.Italic,
-                                        color = Color(android.graphics.Color.parseColor("#5e3bee"))
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-            }
 //            }
+
+
         }
     }
 }
 
+@Preview
 @Composable
 fun mainView() {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Scaffold(
+            topBar = {
+//                        TopAppBar(
+//                            colors = topAppBarColors(
+//                                containerColor = MaterialTheme.colorScheme.primaryContainer,
+//                                titleContentColor = MaterialTheme.colorScheme.primary,
+//                            ),
+//                            title = {
+//                                Text("Top app bar")
+//                            }
+//                        )
+            },
+            bottomBar = {
+                BottomAppBar(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.primary,
+                ) {
+                    val navController = rememberNavController()
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        Button(onClick = { navController.navigate("teste") }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
+                                contentDescription = ""
+                            )
+                        }
 
+                        Button(onClick = { navController.navigate("teste") }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
+                                contentDescription = ""
+                            )
+                        }
+                    }
+
+                    NavHost(navController = navController, startDestination = "main") {
+                        composable("main") {
+                            Text(text = "main")
+                        }
+
+                        composable("teste") {
+                            Text(text = "teste")
+                        }
+                    }
+
+                }
+            }
+        ) { paddingValues ->
+            Column(modifier = Modifier.padding(paddingValues)) {
+                ConstraintLayout {
+                    val (topImg, profile) = createRefs()
+
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .height(245.dp)
+                            .constrainAs(topImg) {
+                                top.linkTo(parent.top)
+                                start.linkTo(parent.start)
+                            }
+                            .background(
+                                color = Color(android.graphics.Color.parseColor("#033F63")),
+                                shape = RoundedCornerShape(
+                                    bottomEnd = 10.dp,
+                                    bottomStart = 10.dp
+                                )
+                            )
+                    )
+
+                    Row(
+                        Modifier
+                            .padding(top = 48.dp, start = 24.dp, end = 24.dp)
+                            .fillMaxWidth()
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
+                            contentDescription = "profile image",
+                            modifier = Modifier
+                                .width(100.dp)
+                                .height(100.dp)
+                                .clickable { }
+                        )
+
+                        Column(
+                            Modifier
+                                .height(100.dp)
+                                .padding(start = 14.dp)
+                                .weight(0.7f),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.Start
+                        ) {
+                            Text(
+                                text = "Hello",
+                                color = androidx.compose.ui.graphics.Color.White,
+                                fontSize = 18.sp,
+                            )
+                            Text(
+                                text = "",
+                                color = androidx.compose.ui.graphics.Color.White,
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(top = 14.dp)
+                            )
+                        }
+                    }
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 24.dp, start = 24.dp, end = 24.dp)
+                            .shadow(3.dp, shape = RoundedCornerShape(20.dp))
+                            .background(
+                                color = androidx.compose.ui.graphics.Color.White,
+                                shape = RoundedCornerShape(20.dp)
+                            )
+                            .constrainAs(profile) {
+                                top.linkTo(topImg.bottom)
+                                bottom.linkTo(topImg.bottom)
+//                                start.linkTo(parent.start)
+//                                end.linkTo(parent.end)
+                            }
+                    )
+                    {
+                        Column(
+                            modifier = Modifier
+                                .padding(
+                                    top = 12.dp,
+                                    bottom = 12.dp,
+                                    end = 12.dp,
+                                    start = 8.dp
+                                )
+                                .height(90.dp)
+                                .width(90.dp)
+                                .background(
+                                    color = Color(android.graphics.Color.parseColor("#b6c2fe")),
+                                    shape = RoundedCornerShape(20.dp)
+                                ),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
+                                contentDescription = "",
+                                modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
+                            )
+                            Text(
+                                text = "Video Call",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontStyle = FontStyle.Italic,
+                                color = Color(android.graphics.Color.parseColor("#5e3bee"))
+                            )
+                        }
+
+                        Column(
+                            modifier = Modifier
+                                .padding(
+                                    top = 12.dp,
+                                    bottom = 12.dp,
+                                    end = 12.dp,
+                                    start = 8.dp
+                                )
+                                .height(90.dp)
+                                .width(90.dp)
+                                .background(
+                                    color = Color(android.graphics.Color.parseColor("#b6c2fe")),
+                                    shape = RoundedCornerShape(20.dp)
+                                ),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
+                                contentDescription = "",
+                                modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
+                            )
+                            Text(
+                                text = "Notification",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontStyle = FontStyle.Italic,
+                                color = Color(android.graphics.Color.parseColor("#5e3bee"))
+                            )
+                        }
+
+                        Column(
+                            modifier = Modifier
+                                .padding(
+                                    top = 12.dp,
+                                    bottom = 12.dp,
+                                    end = 12.dp,
+                                    start = 8.dp
+                                )
+                                .height(90.dp)
+                                .width(90.dp)
+                                .background(
+                                    color = Color(android.graphics.Color.parseColor("#b6c2fe")),
+                                    shape = RoundedCornerShape(20.dp)
+                                ),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
+                                contentDescription = "",
+                                modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
+                            )
+                            Text(
+                                text = "Voice Call",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontStyle = FontStyle.Italic,
+                                color = Color(android.graphics.Color.parseColor("#5e3bee"))
+                            )
+                        }
+
+                    }
+                }
+            }
+        }
+    }
 }
