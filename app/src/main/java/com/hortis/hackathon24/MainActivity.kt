@@ -1,11 +1,11 @@
 package com.hortis.hackathon24
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,18 +14,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,12 +37,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import com.hortis.hackathon24.components.bottomNavBar.BottomNavBar
+import com.hortis.hackathon24.components.searchBar.SearchBar
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -51,64 +48,20 @@ class MainActivity : ComponentActivity() {
 //            Hackathon24Theme {
             // A surface container using the 'background' color from the theme
 //            }
-
-
         }
     }
 }
 
 @Preview
 @Composable
-fun mainView() {
+fun MainView() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
         Scaffold(
-            topBar = {
-//                        TopAppBar(
-//                            colors = topAppBarColors(
-//                                containerColor = MaterialTheme.colorScheme.primaryContainer,
-//                                titleContentColor = MaterialTheme.colorScheme.primary,
-//                            ),
-//                            title = {
-//                                Text("Top app bar")
-//                            }
-//                        )
-            },
             bottomBar = {
-                BottomAppBar(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = MaterialTheme.colorScheme.primary,
-                ) {
-                    val navController = rememberNavController()
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        Button(onClick = { navController.navigate("teste") }) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                                contentDescription = ""
-                            )
-                        }
-
-                        Button(onClick = { navController.navigate("teste") }) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                                contentDescription = ""
-                            )
-                        }
-                    }
-
-                    NavHost(navController = navController, startDestination = "main") {
-                        composable("main") {
-                            Text(text = "main")
-                        }
-
-                        composable("teste") {
-                            Text(text = "teste")
-                        }
-                    }
-
-                }
+                BottomNavBar()
             }
         ) { paddingValues ->
             Column(modifier = Modifier.padding(paddingValues)) {
@@ -118,7 +71,7 @@ fun mainView() {
                     Box(
                         Modifier
                             .fillMaxWidth()
-                            .height(245.dp)
+                            .height(185.dp)
                             .constrainAs(topImg) {
                                 top.linkTo(parent.top)
                                 start.linkTo(parent.start)
@@ -137,15 +90,6 @@ fun mainView() {
                             .padding(top = 48.dp, start = 24.dp, end = 24.dp)
                             .fillMaxWidth()
                     ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
-                            contentDescription = "profile image",
-                            modifier = Modifier
-                                .width(100.dp)
-                                .height(100.dp)
-                                .clickable { }
-                        )
-
                         Column(
                             Modifier
                                 .height(100.dp)
@@ -154,20 +98,22 @@ fun mainView() {
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.Start
                         ) {
-                            Text(
-                                text = "Hello",
-                                color = androidx.compose.ui.graphics.Color.White,
-                                fontSize = 18.sp,
+                            Image(
+                                painter = painterResource(id = R.drawable.logo),
+                                contentDescription = "hortis logo",
+                                modifier = Modifier.size(100.dp),
+                                alignment = Alignment.CenterStart
                             )
-                            Text(
-                                text = "",
-                                color = androidx.compose.ui.graphics.Color.White,
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight.Bold,
-                                modifier = Modifier.padding(top = 14.dp)
+                        }
+                        IconButton(onClick = { Log.d("Click", "IconExample") }) {
+                            Icon(
+                                imageVector = Icons.Outlined.Menu,
+                                contentDescription = "Home Icon"
                             )
                         }
                     }
+
+                    SearchBar()
 
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
