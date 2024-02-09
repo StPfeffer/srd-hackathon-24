@@ -31,6 +31,7 @@ import com.hortis.hackathon24.entity.Anuncio
 import com.hortis.hackathon24.viewmodel.HomeViewModel
 import com.hortis.hackathon24.views.Announcements
 import com.hortis.hackathon24.views.HomeScreen
+import com.hortis.hackathon24.views.producer.ProducerContracts
 import com.hortis.hackathon24.views.producer.ProducerCreateAnnouncementScreen
 
 class MainActivity : ComponentActivity() {
@@ -119,6 +120,12 @@ fun MainView(
 
                 composable("create_announcement") {
                     ProducerCreateAnnouncementScreen(
+                        paddingValues = paddingValues
+                    )
+                }
+
+                composable("contracts") {
+                    ProducerContracts(
                         paddingValues = paddingValues
                     )
                 }

@@ -64,7 +64,7 @@ fun BottomNavBar(
                     )
                     .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
-                    navController.navigate("announcements") {
+                    navController.navigate("contracts") {
                         launchSingleTop = true
                     }
                 },
@@ -73,7 +73,7 @@ fun BottomNavBar(
                 )) {
                 Icon(
                     Icons.Filled.List,
-                    contentDescription = "Anúncios",
+                    contentDescription = "Contratos",
                     modifier = Modifier.size(40.dp),
                     tint = Color.Black
                 )
@@ -96,7 +96,7 @@ fun BottomNavBar(
                 )) {
                 Icon(
                     Icons.Filled.DateRange,
-                    contentDescription = "Contratos",
+                    contentDescription = "Anúncios",
                     modifier = Modifier.size(40.dp),
                     tint = Color.Black
                 )
