@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.hortis.hackathon24.components.announcement.AnnouncementCard
 import com.hortis.hackathon24.components.bottomNavBar.BottomNavBar
-import com.hortis.hackathon24.components.card.HorizontalCard
+import com.hortis.hackathon24.components.announcement.HorizontalAnnouncementCard
 import com.hortis.hackathon24.components.topNavBar.TopNavBar
 
 class MainActivity : ComponentActivity() {
@@ -176,7 +176,7 @@ fun MainView() {
 
                     }
 
-                    HorizontalCard()
+                    HorizontalAnnouncementCard()
                 }
             }
         }

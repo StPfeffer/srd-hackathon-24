@@ -1,4 +1,4 @@
-package com.hortis.hackathon24.components.card
+package com.hortis.hackathon24.components.announcement
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.sp
 import com.hortis.hackathon24.R
 
 @Composable
-fun HorizontalCard(
+fun HorizontalAnnouncementCard(
     modifier: Modifier = Modifier
 ) {
     Box(
