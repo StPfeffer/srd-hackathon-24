@@ -18,7 +18,9 @@ fun FAB(
     navController: NavHostController
 ) {
 
-    val onClick = { navController.navigate("create_announcement") }
+    val onClick = { navController.navigate("create_announcement") {
+        launchSingleTop = true
+    } }
 
     ExtendedFloatingActionButton(
         text = {

@@ -51,17 +51,23 @@ fun HorizontalAnnouncementCard(
 ) {
     Box(
         modifier = modifier
-            .requiredWidth(width = 360.dp)
+            .fillMaxWidth()
             .requiredHeight(height = 80.dp)
             .clip(shape = RoundedCornerShape(12.dp))
             .clickable {
                 navController.navigate("contracts")
-            }
+            },
+        contentAlignment = Alignment.Center
     ) {
         Row(
             modifier = Modifier
-                .requiredWidth(width = 360.dp)
+                .fillMaxWidth()
                 .requiredHeight(height = 80.dp)
+                .padding(
+                    start = 24.dp,
+                    end = 24.dp
+                ),
+            horizontalArrangement = Arrangement.Center
         ) {
             Surface(
                 shape = RoundedCornerShape(12.dp),
@@ -71,7 +77,7 @@ fun HorizontalAnnouncementCard(
             ) {
                 Box(
                     modifier = Modifier
-                        .requiredWidth(width = 360.dp)
+                        .fillMaxWidth()
                         .requiredHeight(height = 80.dp)
                 ) {
                     Row(

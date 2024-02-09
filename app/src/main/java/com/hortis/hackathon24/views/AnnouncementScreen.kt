@@ -41,7 +41,7 @@ fun Announcements(
                 .fillMaxWidth()
         ) {
             Title(
-                text = "Meus compromissos",
+                text = "Meus anúncios",
                 pTop = 24.dp
             )
 
@@ -52,7 +52,7 @@ fun Announcements(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (anuncios.isEmpty()) {
-                    NotFound(text = "Não foram encontrados compromissos.")
+                    NotFound(text = "Não foram encontrados anúncios.")
                 } else {
                     var i = 0
 
@@ -77,8 +77,6 @@ fun Announcements(
                             break
                         }
                     }
-
-
                 }
             }
         }

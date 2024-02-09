@@ -19,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -26,7 +28,11 @@ import com.hortis.hackathon24.R
 
 @Composable
 fun Upload(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    showIcon: Boolean = true,
+    text: String = "Escolher fotos",
+    weight: FontWeight = FontWeight.Normal,
+    style: TextStyle = MaterialTheme.typography.labelLarge
 ) {
     Button(
         onClick = { },
@@ -52,19 +58,22 @@ fun Upload(
                 horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.upload),
-                    contentDescription = "icon",
-                    colorFilter = ColorFilter.tint(Color(0xfff2f2f2)),
-                    modifier = Modifier
-                        .requiredSize(size = 18.dp)
-                )
+                if (showIcon) {
+                    Image(
+                        painter = painterResource(id = R.drawable.upload),
+                        contentDescription = "icon",
+                        colorFilter = ColorFilter.tint(Color(0xfff2f2f2)),
+                        modifier = Modifier
+                            .requiredSize(size = 18.dp)
+                    )
+                }
                 Text(
-                    text = "Escolher fotos",
+                    text = text,
                     color = Color(0xfff2f2f2),
+                    fontWeight = weight,
                     textAlign = TextAlign.Center,
                     lineHeight = 1.43.em,
-                    style = MaterialTheme.typography.labelLarge,
+                    style = style,
                     modifier = Modifier
                         .wrapContentHeight(align = Alignment.CenterVertically)
                 )

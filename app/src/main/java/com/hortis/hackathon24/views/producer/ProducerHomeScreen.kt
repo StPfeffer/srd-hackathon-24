@@ -44,7 +44,7 @@ fun ProducerHomeScreen(
                 .fillMaxWidth()
         ) {
             Title(
-                text = "Meus compromissos",
+                text = "Meus contratos",
                 pTop = 24.dp
             )
 
@@ -76,9 +76,8 @@ fun ProducerHomeScreen(
 
                             if (i == 3) {
                                 SeeMore(
-                                    text = "Ver mais compromissos",
-                                    route = "announcements",
-                                    navController = navController
+                                    text = "Ver mais contratos",
+                                    route = "announcements"
                                 )
 
                                 break
@@ -127,8 +126,7 @@ fun ProducerHomeScreen(
                             if (i == 3) {
                                 SeeMore(
                                     text = "Ver mais anúncios",
-                                    route = "announcements",
-                                    navController = navController
+                                    route = "announcements"
                                 )
 
                                 break

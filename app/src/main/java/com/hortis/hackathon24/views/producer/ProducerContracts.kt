@@ -59,7 +59,10 @@ fun ProducerContracts(
                     end = 24.dp
                 )
         ) {
-            Title(text = "Contratos", pStart = 4.dp)
+            Title(
+                text = "Meus contratos",
+                pStart = 4.dp
+            )
 
             Box(
                 modifier = modifier

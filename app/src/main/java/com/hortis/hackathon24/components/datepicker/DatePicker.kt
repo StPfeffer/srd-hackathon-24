@@ -36,10 +36,13 @@ fun DatePicker(
     var showDatePickerDialog by remember {
         mutableStateOf(false)
     }
+
     var selectedDate by remember {
         mutableStateOf("")
     }
+
     val datePickerState = rememberDatePickerState()
+
     if (showDatePickerDialog) {
         DatePickerDialog(
             onDismissRequest = { showDatePickerDialog = false },
@@ -90,14 +93,14 @@ fun DatePicker(
     )
 }
 
-fun Long.toBrazilianDateFormat(
-    pattern: String = "dd/MM/yyyy"
-): String {
+fun Long.toBrazilianDateFormat(pattern: String = "dd/MM/yyyy"): String {
     val date = Date(this)
+
     val formatter = SimpleDateFormat(
         pattern, Locale("pt-br")
     ).apply {
         timeZone = TimeZone.getTimeZone("GMT")
     }
+
     return formatter.format(date)
 }

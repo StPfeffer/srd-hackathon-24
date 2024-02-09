@@ -64,7 +64,7 @@ fun BottomNavBar(
                     )
                     .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
-                    navController.navigate("contracts") {
+                    navController.navigate("announcements") {
                         launchSingleTop = true
                     }
                 },
@@ -87,7 +87,7 @@ fun BottomNavBar(
                     )
                     .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
-                    navController.navigate("announcements") {
+                    navController.navigate("contracts") {
                         launchSingleTop = true
                     }
                 },
