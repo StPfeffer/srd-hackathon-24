@@ -25,7 +25,9 @@ import androidx.room.Room
 import com.hortis.hackathon24.components.bottomnavbar.BottomNavBar
 import com.hortis.hackathon24.components.button.FAB
 import com.hortis.hackathon24.components.topnavbar.TopNavBar
+import com.hortis.hackathon24.dao.AnuncioDAO
 import com.hortis.hackathon24.database.AppDatabase
+import com.hortis.hackathon24.entity.Anuncio
 import com.hortis.hackathon24.viewmodel.HomeViewModel
 import com.hortis.hackathon24.views.Announcements
 import com.hortis.hackathon24.views.HomeScreen
@@ -45,15 +47,17 @@ class MainActivity : ComponentActivity() {
 
         val viewModel by viewModels<HomeViewModel>()
 
+        val anuncioDao : AnuncioDAO = db.anuncioDAO()
 
-//        val usuarioDAO: UsuarioDAO = db.usuarioDAO()
-//
-//        usuarioDAO.insertAll(Usuario(1, "nome1"), Usuario(2, "nome2"))
-//
-//        val anuncioDao : AnuncioDAO = db.anuncioDAO()
-//
-//        anuncioDao.insertAll(Anuncio(1, "Carambola", 5, "carambola_foreground", "01-02-2024", "01-05-2024",
-//            43F, 1, null, null, null, null))
+        anuncioDao.insertAll(
+            Anuncio(null, "Carambola", 5, "pitaya_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, 1),
+            Anuncio(null, "Pitaya", 5, "pitaya_foreground", "01-02-2024", "01-05-2024", 84F, 1, null, null, null, null, null),
+            Anuncio(null, "Jiló", 5, "pitaya_foreground", "01-02-2024", "01-05-2024", 31F, 1, null, null, null, null, null),
+            Anuncio(null, "Mirtilo", 5, "pitaya_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, 2),
+            Anuncio(null, "Maracujá", 5, "pitaya_foreground", "01-02-2024", "01-05-2024", 12F, 1, null, null, null, null, null),
+            Anuncio(null, "Cenoura Branca", 5, "pitaya_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, 1),
+            Anuncio(null, "Batata Roxa", 5, "pitaya_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, null)
+        )
 
         setContent {
 //            MainView(true, db, viewModel)
@@ -63,7 +67,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @SuppressLint("CoroutineCreationDuringComposition")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainView(
     isProducer: Boolean = false,
@@ -101,7 +104,7 @@ fun MainView(
                 startDestination = "home"
             ) {
                 composable("home") {
-                    HomeScreen(paddingValues, isProducer, db)
+                    HomeScreen(paddingValues, isProducer, db, navController)
                 }
 
                 composable("announcements") {
@@ -109,7 +112,8 @@ fun MainView(
                         Modifier
                             .padding(paddingValues)
                             .verticalScroll(state = rememberScrollState()),
-                        listOfUsuarios
+                        paddingValues,
+                        db
                     )
                 }
 
