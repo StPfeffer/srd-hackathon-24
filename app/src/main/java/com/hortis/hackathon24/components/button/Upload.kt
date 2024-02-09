@@ -32,10 +32,12 @@ fun Upload(
     showIcon: Boolean = true,
     text: String = "Escolher fotos",
     weight: FontWeight = FontWeight.Normal,
-    style: TextStyle = MaterialTheme.typography.labelLarge
+    style: TextStyle = MaterialTheme.typography.labelLarge,
 ) {
     Button(
-        onClick = { },
+        onClick = {
+
+        },
         shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xff033f63)),
         contentPadding = PaddingValues(

@@ -233,7 +233,9 @@ fun MainView(
 
                 composable("create_announcement") {
                     ProducerCreateAnnouncementScreen(
-                        paddingValues = paddingValues
+                        paddingValues = paddingValues,
+                        context = context,
+                        navController = navController
                     )
                 }
 

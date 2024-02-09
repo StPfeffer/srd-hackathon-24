@@ -5,8 +5,8 @@ import com.hortis.hackathon24.entity.Anuncio
 class FormularioDTO(
     var categoria: String,
     var produto: String,
-    var quantidade: Int,
-    var valor: Float,
+    var quantidade: String,
+    var valor: String,
     var formaPgto: String,
     var imagem: String
 ) {
@@ -16,8 +16,8 @@ class FormularioDTO(
 
         anuncio.strcategoria = this.categoria
         anuncio.produto = this.produto
-        anuncio.quantidade = this.quantidade
-        anuncio.preco = this.valor
+        anuncio.quantidade = this.quantidade.toInt()
+        anuncio.preco = this.valor.toFloat()
         anuncio.strformaPagamento = this.formaPgto
         anuncio.imagem = this.imagem
 
