@@ -1,4 +1,4 @@
-package com.hortis.hackathon24.components.bottomNavBar
+package com.hortis.hackathon24.components.bottomnavbar
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth

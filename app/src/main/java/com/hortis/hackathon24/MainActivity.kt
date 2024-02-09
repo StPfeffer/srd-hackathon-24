@@ -16,8 +16,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
-import com.hortis.hackathon24.components.bottomNavBar.BottomNavBar
-import com.hortis.hackathon24.components.topNavBar.TopNavBar
+import com.hortis.hackathon24.components.bottomnavbar.BottomNavBar
+import com.hortis.hackathon24.components.button.FAB
+import com.hortis.hackathon24.components.topnavbar.TopNavBar
 import com.hortis.hackathon24.dao.UsuarioDAO
 import com.hortis.hackathon24.database.AppDatabase
 import com.hortis.hackathon24.entity.Usuario
@@ -63,6 +64,11 @@ fun MainView(
             },
             bottomBar = {
                 BottomNavBar(navController)
+            },
+            floatingActionButton = {
+                if (isProducer) {
+                    FAB(text = "Criar anúncio")
+                }
             }
         ) { paddingValues ->
             NavHost(
