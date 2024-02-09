@@ -43,12 +43,20 @@ import com.hortis.hackathon24.components.searchBar.SearchBar
 
 @Composable
 fun TopNavBar(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isProducer: Boolean
 ) {
+
+    val boxHeight = if (isProducer) {
+        150.dp
+    } else {
+        185.dp
+    }
+
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(185.dp)
+            .height(boxHeight)
             .clip(
                 shape = RoundedCornerShape(
                     topStart = 0.dp,
@@ -93,43 +101,47 @@ fun TopNavBar(
 
         var text by remember { mutableStateOf(TextFieldValue("")) }
 
-        TextField(
-            value = text,
-            onValueChange = { text = it },
-            label = {
-                Text(
-                    text = "Pesquisar",
-                    color = Color.White
-                )
-            },
-            placeholder = {
-                Text(
-                    text = stringResource(R.string.placeholder_search),
-                    color = Color.LightGray
-                )
-            },
-            textStyle = TextStyle(color = Color.White),
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(top = 96.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
-                .fillMaxWidth()
-                .border(
-                    width = 1.dp,
-                    color = Color.White,
-                    shape = RoundedCornerShape(8.dp)
+        // Se não for produtor, exibe a barra de pesquisa
+        if (!isProducer) {
+            TextField(
+                value = text,
+                onValueChange = { text = it },
+                label = {
+                    Text(
+                        text = "Pesquisar",
+                        color = Color.White
+                    )
+                },
+                placeholder = {
+                    Text(
+                        text = stringResource(R.string.placeholder_search),
+                        color = Color.LightGray
+                    )
+                },
+                textStyle = TextStyle(color = Color.White),
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(top = 96.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
+                    .fillMaxWidth()
+                    .border(
+                        width = 1.dp,
+                        color = Color.White,
+                        shape = RoundedCornerShape(8.dp)
+                    ),
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = null,
+                        tint = Color.White
+                    )
+                },
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
+                    unfocusedContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
+                    disabledContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
                 ),
-            trailingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = null,
-                    tint = Color.White
-                )
-            },
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
-                unfocusedContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
-                disabledContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
-            ),
-        )
+            )
+        }
+
     }
 }

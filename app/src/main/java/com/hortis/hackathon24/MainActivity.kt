@@ -23,13 +23,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            MainView()
+            MainView(true)
         }
     }
 }
 
 @Composable
-fun MainView() {
+fun MainView(
+    isProducer: Boolean = false
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -38,7 +40,7 @@ fun MainView() {
 
         Scaffold(
             topBar = {
-                TopNavBar()
+                TopNavBar(isProducer = isProducer)
             },
             bottomBar = {
                 BottomNavBar(navController)
@@ -49,7 +51,7 @@ fun MainView() {
                 startDestination = "home"
             ) {
                 composable("home") {
-                    HomeScreen(paddingValues)
+                    HomeScreen(paddingValues, isProducer)
                 }
 
                 composable("announcements") {
