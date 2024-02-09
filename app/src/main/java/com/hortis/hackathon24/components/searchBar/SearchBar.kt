@@ -1,5 +1,6 @@
 package com.hortis.hackathon24.components.searchBar
 
+import android.graphics.Color.parseColor
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,9 +44,9 @@ fun SearchBar(
                 )
             },
             colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
-                unfocusedContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
-                disabledContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
+                focusedContainerColor = Color(parseColor("#033F63")),
+                unfocusedContainerColor = Color(parseColor("#033F63")),
+                disabledContainerColor = Color(parseColor("#033F63")),
             ),
             placeholder = {
                 Text(
