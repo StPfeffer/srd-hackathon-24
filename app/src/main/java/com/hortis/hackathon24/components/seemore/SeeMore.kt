@@ -19,14 +19,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 @Composable
 fun SeeMore(
     modifier: Modifier = Modifier,
     text: String = "Ver mais",
+    route: String,
+    navController: NavController
 ) {
     OutlinedButton(
-        onClick = { },
+        onClick = {
+            navController.navigate(route = route)
+        },
         shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
         contentPadding = PaddingValues(horizontal = 24.dp, vertical = 10.dp),
