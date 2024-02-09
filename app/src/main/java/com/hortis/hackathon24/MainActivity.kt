@@ -8,13 +8,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -31,7 +32,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.hortis.hackathon24.components.announcement.AnnouncementCard
 import com.hortis.hackathon24.components.bottomNavBar.BottomNavBar
+import com.hortis.hackathon24.components.card.HorizontalCard
 import com.hortis.hackathon24.components.topNavBar.TopNavBar
 
 class MainActivity : ComponentActivity() {
@@ -59,8 +62,14 @@ fun MainView() {
             ConstraintLayout {
                 val (topImg, profile) = createRefs()
 
-                Column(modifier = Modifier.padding(paddingValues)) {
+                Column(
+                    modifier = Modifier
+                        .padding(paddingValues)
+                        .verticalScroll(state = rememberScrollState())
+                ) {
                     TopNavBar()
+
+                    AnnouncementCard()
 
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -70,7 +79,7 @@ fun MainView() {
                             .padding(top = 24.dp, start = 24.dp, end = 24.dp)
                             .shadow(3.dp, shape = RoundedCornerShape(20.dp))
                             .background(
-                                color = androidx.compose.ui.graphics.Color.White,
+                                color = Color.White,
                                 shape = RoundedCornerShape(20.dp)
                             )
                     )
@@ -166,6 +175,8 @@ fun MainView() {
                         }
 
                     }
+
+                    HorizontalCard()
                 }
             }
         }
