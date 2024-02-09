@@ -78,18 +78,18 @@ fun TopNavBar(
             Logo()
         }
 
-        Icon(
-            painter = painterResource(id = R.drawable.menu_top),
-            contentDescription = "Icons/more_24px",
-            tint = Color(0xffffbf1f),
-            modifier = Modifier
-                .align(alignment = Alignment.TopStart)
-                .offset(
-                    x = 352.dp,
-                    y = 84.dp
-                )
-                .padding(bottom = 16.dp)
-        )
+//        Icon(
+//            painter = painterResource(id = R.drawable.menu_top),
+//            contentDescription = "Icons/more_24px",
+//            tint = Color(0xffffbf1f),
+//            modifier = Modifier
+//                .align(alignment = Alignment.TopStart)
+//                .offset(
+//                    x = 352.dp,
+//                    y = 84.dp
+//                )
+//                .padding(bottom = 16.dp)
+//        )
 
         var text by remember { mutableStateOf(TextFieldValue("")) }
 
