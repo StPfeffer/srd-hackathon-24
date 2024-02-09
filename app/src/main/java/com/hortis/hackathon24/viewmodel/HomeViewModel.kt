@@ -40,7 +40,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
             val usuarioDAO: UsuarioDAO = db.usuarioDAO()
 
-            usuarioDAO.insertAll(Usuario(1, "nome1"), Usuario(2, "nome2"))
+            usuarioDAO.insertAll(Usuario(null, "nome1"), Usuario(null, "nome2"))
 
             _listOfUsuarios.value.addAll(usuarioDAO.getAll())
             db.close()
