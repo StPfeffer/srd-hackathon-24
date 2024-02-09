@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,7 +37,11 @@ fun SeeMore(
         contentPadding = PaddingValues(horizontal = 24.dp, vertical = 10.dp),
         border = BorderStroke(1.dp, Color(0xff264653)),
         modifier = modifier
-            .requiredWidth(width = 360.dp)
+            .fillMaxWidth()
+            .padding(
+                start = 24.dp,
+                end = 24.dp
+            )
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
