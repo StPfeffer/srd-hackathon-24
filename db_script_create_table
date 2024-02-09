@@ -1,0 +1,57 @@
+-- SQLite Script
+PRAGMA foreign_keys = ON;
+
+-- Table `usuario`
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` INTEGER NOT NULL PRIMARY KEY,
+  `nome` TEXT NOT NULL
+);
+
+-- Table `certificacao`
+CREATE TABLE IF NOT EXISTS `certificacao` (
+  `id` INTEGER NOT NULL PRIMARY KEY,
+  `nome` TEXT NOT NULL,
+  `validade` DATETIME NOT NULL
+);
+
+-- Table `categoria`
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `id` INTEGER NOT NULL PRIMARY KEY,
+  `nome` TEXT NOT NULL
+);
+
+-- Table `recorrencia`
+CREATE TABLE IF NOT EXISTS `recorrencia` (
+  `id` INTEGER NOT NULL PRIMARY KEY,
+  `nome` TEXT NOT NULL,
+  `frequencia` INTEGER NOT NULL,
+  `tipo` TEXT NOT NULL
+);
+
+-- Table `forma_pagamento`
+CREATE TABLE IF NOT EXISTS `forma_pagamento` (
+  `id` INTEGER NOT NULL PRIMARY KEY,
+  `nome` TEXT NOT NULL
+);
+
+-- Table `anuncio`
+CREATE TABLE IF NOT EXISTS `anuncio` (
+  `id` INTEGER NOT NULL PRIMARY KEY,
+  `usuario_idusuario` INTEGER NOT NULL,
+  `produto` TEXT NOT NULL,
+  `quantidade` INTEGER NOT NULL,
+  `imagem` TEXT,
+  `anunciocol` TEXT,
+  `disponibilidade_inicial` DATETIME NOT NULL,
+  `disponibilidade_final` DATETIME NOT NULL,
+  `preco` INTEGER NOT NULL,
+  `certificacao_idcertificacao` INTEGER NOT NULL,
+  `categoria_idcategoria` INTEGER NOT NULL,
+  `recorrencia_idrecorrencia` INTEGER NOT NULL,
+  `forma_pagamento_idforma_pagamento` INTEGER NOT NULL,
+  FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`id`),
+  FOREIGN KEY (`certificacao_idcertificacao`) REFERENCES `certificacao` (`id`),
+  FOREIGN KEY (`categoria_idcategoria`) REFERENCES `categoria` (`id`),
+  FOREIGN KEY (`recorrencia_idrecorrencia`) REFERENCES `recorrencia` (`id`),
+  FOREIGN KEY (`forma_pagamento_idforma_pagamento`) REFERENCES `forma_pagamento` (`id`)
+);
