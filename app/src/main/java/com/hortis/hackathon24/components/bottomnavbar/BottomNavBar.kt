@@ -35,8 +35,13 @@ fun BottomNavBar(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Button(modifier = Modifier.padding(start = 10.dp, end = 10.dp)
-                .background(Color(android.graphics.Color.TRANSPARENT)),
+            Button(
+                modifier = Modifier
+                    .padding(
+                        start = 10.dp,
+                        end = 10.dp
+                    )
+                    .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
                     navController.navigate("home")
                 },
@@ -51,7 +56,13 @@ fun BottomNavBar(
                 )
             }
 
-            Button(modifier = Modifier.padding(start = 10.dp, end = 10.dp).background(Color(android.graphics.Color.TRANSPARENT)),
+            Button(
+                modifier = Modifier
+                    .padding(
+                        start = 10.dp,
+                        end = 10.dp
+                    )
+                    .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
                     navController.navigate("announcements") {
                         launchSingleTop = true
@@ -68,9 +79,13 @@ fun BottomNavBar(
                 )
             }
 
-            Button(modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp)
-                .background(Color(android.graphics.Color.TRANSPARENT)),
+            Button(
+                modifier = Modifier
+                    .padding(
+                        start = 10.dp,
+                        end = 10.dp
+                    )
+                    .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
                     navController.navigate("announcements") {
                         launchSingleTop = true
