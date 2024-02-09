@@ -57,7 +57,7 @@ fun Announcements(
                     var i = 0
 
                     for (anuncio in anuncios) {
-                        if (anuncio.comprador != null) {
+                        if (anuncio.comprador == null) {
                             val usuario = usuarioDAO.findById(anuncio.usuario)
 
                             HorizontalAnnouncementCard(

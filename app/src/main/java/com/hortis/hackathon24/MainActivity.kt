@@ -102,7 +102,7 @@ class MainActivity : ComponentActivity() {
                 84F,
                 "Fruta",
                 "PIX",
-                null,
+                2,
                 2
             ),
             Anuncio(
@@ -115,7 +115,7 @@ class MainActivity : ComponentActivity() {
                 31F,
                 "Hortaliça",
                 "PIX",
-                null,
+                1,
                 1
             ),
             Anuncio(
@@ -154,7 +154,7 @@ class MainActivity : ComponentActivity() {
                 43F,
                 "Tuberculo",
                 "PIX",
-                null,
+                1,
                 2
             ),
             Anuncio(
