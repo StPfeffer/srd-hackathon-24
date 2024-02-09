@@ -5,6 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "forma_pagamento")
-data class FormaPagamento(@PrimaryKey val id: Int,
+data class FormaPagamento(@PrimaryKey(true) val id: Int?,
                           @ColumnInfo(name = "nome") val nome: String) {
 }

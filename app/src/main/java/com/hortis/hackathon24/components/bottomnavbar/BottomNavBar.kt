@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -27,52 +28,77 @@ fun BottomNavBar(
     navController: NavController
 ) {
     BottomAppBar(
-        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        containerColor = Color(android.graphics.Color.parseColor("#FFFBFE")),
         contentColor = MaterialTheme.colorScheme.primary,
     ) {
-
-
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Button(modifier = Modifier.padding(start = 10.dp, end = 10.dp)
-                .background(Color(android.graphics.Color.TRANSPARENT)),
+            Button(
+                modifier = Modifier
+                    .padding(
+                        start = 10.dp,
+                        end = 10.dp
+                    )
+                    .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
                     navController.navigate("home")
-                }) {
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent,
+                )) {
                 Icon(
                     Icons.Filled.Home,
                     contentDescription = "Início",
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Black
                 )
             }
 
-            Button(modifier = Modifier.padding(start = 10.dp, end = 10.dp).background(Color(android.graphics.Color.TRANSPARENT)),
+            Button(
+                modifier = Modifier
+                    .padding(
+                        start = 10.dp,
+                        end = 10.dp
+                    )
+                    .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
                     navController.navigate("announcements") {
                         launchSingleTop = true
                     }
-                }) {
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent,
+                )) {
                 Icon(
                     Icons.Filled.List,
                     contentDescription = "Anúncios",
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Black
                 )
             }
 
-            Button(modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp)
-                .background(Color(android.graphics.Color.TRANSPARENT)),
+            Button(
+                modifier = Modifier
+                    .padding(
+                        start = 10.dp,
+                        end = 10.dp
+                    )
+                    .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
                     navController.navigate("announcements") {
                         launchSingleTop = true
                     }
-                }) {
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent,
+                )) {
                 Icon(
                     Icons.Filled.DateRange,
                     contentDescription = "Contratos",
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Black
                 )
             }
 
