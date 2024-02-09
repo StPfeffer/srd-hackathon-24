@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "recorrencia")
 data class Recorrencia(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(true) val id: Int?,
     @ColumnInfo(name = "nome") val nome: String,
     @ColumnInfo(name = "frequencia") val frequencia: Int,
     @ColumnInfo(name = "tipo") val validade: String
