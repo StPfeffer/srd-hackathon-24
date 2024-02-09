@@ -27,6 +27,7 @@ import com.hortis.hackathon24.database.AppDatabase
 import com.hortis.hackathon24.viewmodel.HomeViewModel
 import com.hortis.hackathon24.views.Announcements
 import com.hortis.hackathon24.views.HomeScreen
+import com.hortis.hackathon24.views.producer.ProducerCreateAnnouncementScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -84,7 +85,10 @@ fun MainView(
             },
             floatingActionButton = {
                 if (isProducer) {
-                    FAB(text = "Criar anúncio")
+                    FAB(
+                        text = "Criar anúncio",
+                        navController = navController
+                    )
                 }
             }
         ) { paddingValues ->
@@ -103,6 +107,12 @@ fun MainView(
                             .padding(paddingValues)
                             .verticalScroll(state = rememberScrollState()),
                         listOfUsuarios
+                    )
+                }
+
+                composable("create_announcement") {
+                    ProducerCreateAnnouncementScreen(
+                        paddingValues = paddingValues
                     )
                 }
 

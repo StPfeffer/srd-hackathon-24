@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -31,9 +32,15 @@ fun Upload(
         onClick = { },
         shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xff033f63)),
-        contentPadding = PaddingValues(start = 16.dp, top = 10.dp, end = 24.dp, bottom = 10.dp),
+        contentPadding = PaddingValues(
+            start = 16.dp,
+            top = 10.dp,
+            end = 24.dp,
+            bottom = 10.dp
+        ),
         modifier = modifier
             .requiredWidth(width = 364.dp)
+            .height(56.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
@@ -50,7 +57,8 @@ fun Upload(
                     contentDescription = "icon",
                     colorFilter = ColorFilter.tint(Color(0xfff2f2f2)),
                     modifier = Modifier
-                        .requiredSize(size = 18.dp))
+                        .requiredSize(size = 18.dp)
+                )
                 Text(
                     text = "Escolher fotos",
                     color = Color(0xfff2f2f2),
@@ -58,7 +66,8 @@ fun Upload(
                     lineHeight = 1.43.em,
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier
-                        .wrapContentHeight(align = Alignment.CenterVertically))
+                        .wrapContentHeight(align = Alignment.CenterVertically)
+                )
             }
         }
     }
