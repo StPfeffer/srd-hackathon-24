@@ -1,9 +1,9 @@
 package com.hortis.hackathon24.views.producer
 
 import android.graphics.Color.parseColor
-import android.provider.CalendarContract.Colors
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -12,11 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.hortis.hackathon24.components.button.Upload
-import com.hortis.hackathon24.components.dropdown.DropDown
 import com.hortis.hackathon24.components.searchbar.TextInput
 import com.hortis.hackathon24.components.text.SubTitle
 import com.hortis.hackathon24.components.text.Title
@@ -118,6 +116,8 @@ fun ProducerCreateAnnouncementScreen(
                 background = Color.White,
                 outline = Color(parseColor("#033F63"))
             )
+
+            Spacer(modifier = Modifier.padding(top = 64.dp))
         }
     }
 }

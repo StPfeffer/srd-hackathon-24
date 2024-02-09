@@ -30,22 +30,18 @@ import com.hortis.hackathon24.viewmodel.HomeViewModel
 import com.hortis.hackathon24.views.Announcements
 import com.hortis.hackathon24.views.HomeScreen
 import com.hortis.hackathon24.views.producer.ProducerCreateAnnouncementScreen
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        val db = Room.databaseBuilder(
-//            applicationContext,
-//            AppDatabase::class.java, "hortis"
-//        ).fallbackToDestructiveMigration()
-//            .allowMainThreadQueries()
-//            .build()
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "hortis"
+        ).fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
+            .build()
 
         val viewModel by viewModels<HomeViewModel>()
 
@@ -61,7 +57,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 //            MainView(true, db, viewModel)
-            MainView(true, viewModel, application)
+            MainView(true, db, viewModel, application)
         }
     }
 }
@@ -71,7 +67,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainView(
     isProducer: Boolean = false,
-//    db: AppDatabase,
+    db: AppDatabase,
     homeViewModel: HomeViewModel,
     context: Context
 ) {
@@ -105,8 +101,7 @@ fun MainView(
                 startDestination = "home"
             ) {
                 composable("home") {
-//                    HomeScreen(paddingValues, isProducer, db)
-                    HomeScreen(paddingValues, isProducer)
+                    HomeScreen(paddingValues, isProducer, db)
                 }
 
                 composable("announcements") {
@@ -123,14 +118,6 @@ fun MainView(
                         paddingValues = paddingValues
                     )
                 }
-
-//                composable("contracts") {
-//                    ContractScreen(Modifier, paddingValues)
-//                }
-//
-//                composable("orders") {
-//                    OrderScreen(Modifier, paddingValues)
-//                }
             }
 
         }

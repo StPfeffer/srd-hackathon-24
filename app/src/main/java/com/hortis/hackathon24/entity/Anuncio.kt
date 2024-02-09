@@ -1,16 +1,12 @@
 package com.hortis.hackathon24.entity
 
 import androidx.room.ColumnInfo
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.math.BigDecimal
-import java.math.BigInteger
-import java.util.Calendar
 
 @Entity(tableName = "anuncio")
 class Anuncio(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(true) val id: Int?,
     @ColumnInfo(name = "produto") val produto: String,
     @ColumnInfo(name = "quantidade") val quantidade: Int,
     @ColumnInfo(name = "imagem") val imagem: String,
