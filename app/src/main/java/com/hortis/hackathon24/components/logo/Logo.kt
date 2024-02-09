@@ -1,6 +1,7 @@
 package com.hortis.hackathon24.components.logo
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,7 +17,9 @@ fun Logo(
     Image(
         painter = painterResource(id = R.drawable.logo),
         contentDescription = "hortis logo",
-        modifier = Modifier.size(115.dp),
+        modifier = Modifier
+            .size(115.dp)
+            .aspectRatio(ratio = 1.5f),
         alignment = Alignment.CenterStart
     )
 }

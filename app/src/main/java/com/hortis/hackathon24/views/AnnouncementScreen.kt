@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.constraintlayout.compose.ConstraintLayout
 
 @Composable
-fun Announcements(
+fun AnnouncementScreen(
     modifier: Modifier = Modifier,
     paddingValues : PaddingValues
 ) {

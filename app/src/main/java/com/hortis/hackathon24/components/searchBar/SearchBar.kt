@@ -14,54 +14,59 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.hortis.hackathon24.R
 
 @Composable
 fun SearchBar(
-    modifier : Modifier = Modifier,
-    top : Dp = 16.dp,
-    start: Dp = 24.dp,
-    end: Dp = 24.dp
+    modifier: Modifier = Modifier
 ) {
-    Row(
-        Modifier
-            .padding(top = top, start = start, end = end)
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+
+    TextField(
+        value = text,
+        onValueChange = { text = it },
+        label = {
+            Text(text = "Pesquisar")
+        },
+        placeholder = {
+            Text(
+                text = stringResource(R.string.placeholder_search),
+                color = Color.White
+            )
+        },
+        trailingIcon = {
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = null,
+                tint = Color.White
+            )
+        },
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = Color(parseColor("#033F63")),
+            unfocusedContainerColor = Color(parseColor("#033F63")),
+            disabledContainerColor = Color(parseColor("#033F63")),
+        ),
+        modifier = modifier
             .fillMaxWidth()
-    ) {
-        TextField(
-            value = "",
-            onValueChange = {},
-            trailingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = null,
-                    tint = Color.White
-                )
-            },
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(parseColor("#033F63")),
-                unfocusedContainerColor = Color(parseColor("#033F63")),
-                disabledContainerColor = Color(parseColor("#033F63")),
-            ),
-            placeholder = {
-                Text(
-                    text = stringResource(R.string.placeholder_search),
-                    color = Color.White
-                )
-            },
-            modifier = modifier
-                .fillMaxWidth()
-                .heightIn(min = 56.dp)
-                .border(
-                    width = 1.dp,
-                    color = Color.White,
-                    shape = RoundedCornerShape(8.dp)
-                )
-        )
-    }
+            .heightIn(min = 56.dp)
+            .border(
+                width = 1.dp,
+                color = Color.White,
+                shape = RoundedCornerShape(8.dp)
+            )
+            .padding(
+                start = 24.dp,
+                end = 24.dp
+            )
+    )
 }
