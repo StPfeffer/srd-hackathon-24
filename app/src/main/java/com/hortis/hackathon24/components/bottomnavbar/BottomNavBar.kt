@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
@@ -18,10 +19,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.hortis.hackathon24.R
 
 @Composable
 fun BottomNavBar(
@@ -38,8 +37,8 @@ fun BottomNavBar(
             Button(
                 modifier = Modifier
                     .padding(
-                        start = 10.dp,
-                        end = 10.dp
+                        start = 5.dp,
+                        end = 5.dp
                     )
                     .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
@@ -47,11 +46,12 @@ fun BottomNavBar(
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent,
-                )) {
+                )
+            ) {
                 Icon(
                     Icons.Filled.Home,
                     contentDescription = "Início",
-                    modifier = Modifier.size(40.dp),
+                    modifier = Modifier.size(20.dp),
                     tint = Color.Black
                 )
             }
@@ -59,8 +59,8 @@ fun BottomNavBar(
             Button(
                 modifier = Modifier
                     .padding(
-                        start = 10.dp,
-                        end = 10.dp
+                        start = 5.dp,
+                        end = 5.dp
                     )
                     .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
@@ -70,7 +70,8 @@ fun BottomNavBar(
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent,
-                )) {
+                )
+            ) {
                 Icon(
                     Icons.Filled.List,
                     contentDescription = "Contratos",
@@ -82,8 +83,8 @@ fun BottomNavBar(
             Button(
                 modifier = Modifier
                     .padding(
-                        start = 10.dp,
-                        end = 10.dp
+                        start = 5.dp,
+                        end = 5.dp
                     )
                     .background(Color(android.graphics.Color.TRANSPARENT)),
                 onClick = {
@@ -93,15 +94,35 @@ fun BottomNavBar(
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent,
-                )) {
+                )
+            ) {
                 Icon(
                     Icons.Filled.DateRange,
                     contentDescription = "Anúncios",
-                    modifier = Modifier.size(40.dp),
+                    modifier = Modifier.size(20.dp),
                     tint = Color.Black
                 )
             }
 
+            Button(
+                modifier = Modifier
+                    .padding(
+                        start = 5.dp,
+                        end = 5.dp
+                    )
+                    .background(Color(android.graphics.Color.TRANSPARENT)),
+                onClick = { navController.navigate("create_announcement") },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent,
+                )
+            ) {
+                Icon(
+                    Icons.Filled.AddCircle,
+                    contentDescription = "Criar Anúncio",
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Black
+                )
+            }
         }
     }
 }
