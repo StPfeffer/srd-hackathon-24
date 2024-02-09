@@ -26,4 +26,9 @@ interface AnuncioDAO {
     @Delete
     fun delete(anuncio: Anuncio)
 
+    @Query(
+        "DELETE FROM anuncio WHERE 1 = 1"
+    )
+    fun deleteAll()
+
 }

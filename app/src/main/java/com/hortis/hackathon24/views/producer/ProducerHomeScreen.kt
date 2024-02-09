@@ -62,7 +62,11 @@ fun ProducerHomeScreen(
                         if (anuncio.comprador != null) {
                             val usuario = usuarioDAO.findById(anuncio.usuario)
 
-                            HorizontalAnnouncementCard(anuncio = anuncio, usuario = usuario)
+                            HorizontalAnnouncementCard(
+                                anuncio = anuncio,
+                                usuario = usuario,
+                                navController = navController
+                            )
 
                             Spacer(
                                 modifier.padding(top = 8.dp)
@@ -108,7 +112,11 @@ fun ProducerHomeScreen(
                         if (anuncio.comprador == null) {
                             val usuario = usuarioDAO.findById(anuncio.usuario)
 
-                            HorizontalAnnouncementCard(anuncio = anuncio, usuario = usuario)
+                            HorizontalAnnouncementCard(
+                                anuncio = anuncio,
+                                usuario = usuario,
+                                navController = navController
+                            )
 
                             Spacer(
                                 modifier.padding(top = 8.dp)

@@ -31,7 +31,7 @@ fun SeeMore(
 ) {
     OutlinedButton(
         onClick = {
-            navController.navigate(route = route)
+//            navController.navigate(route = route)
         },
         shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
