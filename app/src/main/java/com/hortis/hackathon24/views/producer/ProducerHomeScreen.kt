@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import com.hortis.hackathon24.components.announcement.HorizontalAnnouncementCard
 import com.hortis.hackathon24.components.notfound.NotFound
 import com.hortis.hackathon24.components.seemore.SeeMore
@@ -25,7 +26,8 @@ import com.hortis.hackathon24.database.AppDatabase
 fun ProducerHomeScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    db: AppDatabase
+    db: AppDatabase,
+    navController: NavController
 ) {
     ConstraintLayout {
         val anuncioDAO: AnuncioDAO = db.anuncioDAO()
@@ -41,7 +43,10 @@ fun ProducerHomeScreen(
                 )
                 .fillMaxWidth()
         ) {
-            Title(text = "Meus compromissos")
+            Title(
+                text = "Meus compromissos",
+                pTop = 24.dp
+            )
 
             Column(
                 modifier = Modifier
@@ -67,7 +72,9 @@ fun ProducerHomeScreen(
 
                             if (i == 3) {
                                 SeeMore(
-                                    text = "Ver mais compromissos"
+                                    text = "Ver mais compromissos",
+                                    route = "announcements",
+                                    navController = navController
                                 )
 
                                 break
@@ -81,7 +88,10 @@ fun ProducerHomeScreen(
                 }
             }
 
-            Title(text = "Anúncios abertos")
+            Title(
+                text = "Anúncios abertos",
+                pTop = 24.dp
+            )
 
             Column(
                 modifier = Modifier
@@ -108,7 +118,9 @@ fun ProducerHomeScreen(
 
                             if (i == 3) {
                                 SeeMore(
-                                    text = "Ver mais anúncios"
+                                    text = "Ver mais anúncios",
+                                    route = "announcements",
+                                    navController = navController
                                 )
 
                                 break

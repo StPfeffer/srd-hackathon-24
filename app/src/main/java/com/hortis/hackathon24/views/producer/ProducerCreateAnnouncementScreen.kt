@@ -80,14 +80,14 @@ fun ProducerCreateAnnouncementScreen(
                 outline = Color(parseColor("#033F63"))
             )
 
-            SubTitle(text = "Recorrência", pStart = 0.dp, pTop = 16.dp)
-
-            TextInput(
-                placeholder = "Informe a recorrência do produto",
-                textColor = Color(parseColor("#033F63")),
-                background = Color.White,
-                outline = Color(parseColor("#033F63"))
-            )
+//            SubTitle(text = "Recorrência", pStart = 0.dp, pTop = 16.dp)
+//
+//            TextInput(
+//                placeholder = "Informe a recorrência do produto",
+//                textColor = Color(parseColor("#033F63")),
+//                background = Color.White,
+//                outline = Color(parseColor("#033F63"))
+//            )
 
             SubTitle(text = "Selos e Certificados", pStart = 0.dp, pTop = 16.dp)
 
