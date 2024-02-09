@@ -9,19 +9,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.hortis.hackathon24.entity.Usuario
 
 @Composable
-fun AnnouncementScreen(
-    modifier: Modifier = Modifier,
-    paddingValues : PaddingValues
+fun Announcements(
+    modifier: Modifier,
+    listOfUsuarios: List<Usuario>
 ) {
     ConstraintLayout {
         Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .verticalScroll(state = rememberScrollState())
+            modifier = modifier
         ) {
-            Text(text = "Hello, World!")
+            listOfUsuarios.forEach { usuario: Usuario ->
+                Text(text = usuario.nome)
+            }
         }
     }
 }
