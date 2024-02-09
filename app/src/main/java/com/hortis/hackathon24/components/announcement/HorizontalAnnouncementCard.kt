@@ -27,22 +27,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import com.hortis.hackathon24.R
 import com.hortis.hackathon24.entity.Anuncio
+import com.hortis.hackathon24.entity.Usuario
+import java.util.Locale
 
 @Composable
 fun HorizontalAnnouncementCard(
     modifier: Modifier = Modifier,
-    anuncio: Anuncio
+    anuncio: Anuncio,
+    usuario: Usuario
 ) {
     Box(
         modifier = modifier
@@ -89,7 +91,7 @@ fun HorizontalAnnouncementCard(
                                         .background(color = Color(0xff033f63))
                                 )
                                 Text(
-                                    text = "A",
+                                    text = usuario.nome[0].toString().uppercase(Locale.ROOT),
                                     color = Color(0xfff2f2f2),
                                     textAlign = TextAlign.Center,
                                     lineHeight = 1.5.em,
@@ -115,6 +117,8 @@ fun HorizontalAnnouncementCard(
                             ) {
                                 Text(
                                     text = anuncio.produto,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
                                     color = Color(0xff151515),
                                     lineHeight = 1.5.em,
                                     style = TextStyle(

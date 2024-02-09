@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.em
 @Composable
 fun SeeMore(
     modifier: Modifier = Modifier,
-    text: String = "Ver mais"
+    text: String = "Ver mais",
 ) {
     OutlinedButton(
         onClick = { },

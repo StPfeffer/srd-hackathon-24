@@ -18,6 +18,7 @@ import com.hortis.hackathon24.components.notfound.NotFound
 import com.hortis.hackathon24.components.seemore.SeeMore
 import com.hortis.hackathon24.components.text.Title
 import com.hortis.hackathon24.dao.AnuncioDAO
+import com.hortis.hackathon24.dao.UsuarioDAO
 import com.hortis.hackathon24.database.AppDatabase
 
 @Composable
@@ -27,7 +28,10 @@ fun ProducerHomeScreen(
     db: AppDatabase
 ) {
     ConstraintLayout {
-        val (topImg, profile) = createRefs()
+        val anuncioDAO: AnuncioDAO = db.anuncioDAO()
+        val usuarioDAO: UsuarioDAO = db.usuarioDAO()
+
+        val anuncios = anuncioDAO.getAll()
 
         Column(
             modifier = Modifier
@@ -45,29 +49,34 @@ fun ProducerHomeScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val anuncioDAO: AnuncioDAO = db.anuncioDAO()
-                val anuncios = anuncioDAO.getAll()
-
                 if (anuncios.isEmpty()) {
-                    NotFound(text = "Não foram encontrados compromissos")
+                    NotFound(text = "Não foram encontrados compromissos.")
                 } else {
                     var i = 0
                     for (anuncio in anuncios) {
-                        HorizontalAnnouncementCard(anuncio = anuncio)
+                        if (anuncio.comprador != null) {
+                            val usuario = usuarioDAO.findById(anuncio.usuario)
 
-                        Spacer(
-                            modifier.padding(top = 8.dp)
-                        )
+                            HorizontalAnnouncementCard(anuncio = anuncio, usuario = usuario)
 
-                        i++
-
-                        if (i == 3) {
-                            SeeMore(
-                                text = "Ver mais compromissos"
+                            Spacer(
+                                modifier.padding(top = 8.dp)
                             )
 
-                            break
+                            i++
+
+                            if (i == 3) {
+                                SeeMore(
+                                    text = "Ver mais compromissos"
+                                )
+
+                                break
+                            }
                         }
+                    }
+
+                    if (i == 0) {
+                        NotFound(text = "Não foram encontrados compromissos.")
                     }
                 }
             }
@@ -81,16 +90,36 @@ fun ProducerHomeScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                for (i in 0..2) {
-//                    HorizontalAnnouncementCard(null)
-//                    Spacer(
-//                        modifier.padding(top = 8.dp)
-//                    )
-                }
+                if (anuncios.isEmpty()) {
+                    NotFound(text = "Não foram encontrados anúncios.")
+                } else {
+                    var i = 0
+                    for (anuncio in anuncios) {
+                        if (anuncio.comprador == null) {
+                            val usuario = usuarioDAO.findById(anuncio.usuario)
 
-                SeeMore(
-                    text = "Ver mais compromissos"
-                )
+                            HorizontalAnnouncementCard(anuncio = anuncio, usuario = usuario)
+
+                            Spacer(
+                                modifier.padding(top = 8.dp)
+                            )
+
+                            i++
+
+                            if (i == 3) {
+                                SeeMore(
+                                    text = "Ver mais anúncios"
+                                )
+
+                                break
+                            }
+                        }
+                    }
+
+                    if (i == 0) {
+                        NotFound(text = "Não foram encontrados anúncios.")
+                    }
+                }
             }
         }
     }

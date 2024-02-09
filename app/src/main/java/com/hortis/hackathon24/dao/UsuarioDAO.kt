@@ -19,6 +19,11 @@ interface UsuarioDAO {
     )
     fun findByName(nome: String): Usuario
 
+    @Query(
+        "SELECT * FROM usuario WHERE id LIKE :id LIMIT 1"
+    )
+    fun findById(id: Int): Usuario
+
     @Insert
     fun insertAll(vararg usuarios: Usuario)
 

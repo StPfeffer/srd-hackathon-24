@@ -45,8 +45,16 @@ class MainActivity : ComponentActivity() {
 
         val anuncioDao : AnuncioDAO = db.anuncioDAO()
 
-        anuncioDao.insertAll(Anuncio(1, "Carambola", 5, "carambola_foreground", "01-02-2024", "01-05-2024",
-            43F, 1, null, null, null, null))
+        anuncioDao.insertAll(
+            Anuncio(1, "Carambola", 5, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, 1),
+            Anuncio(2, "Jiló", 5, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, 2),
+            Anuncio(3, "Mirtilo", 12, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, 2),
+            Anuncio(4, "Um produto com nome bem grande, isso vai quebrar", 65, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, null),
+            Anuncio(5, "Pitaya", 2, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, 1),
+            Anuncio(6, "Batata Roxa", 75, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, null),
+            Anuncio(7, "Cenoura Branca", 34, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, null),
+            Anuncio(8, "Produto bem Raro", 1, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, null),
+            Anuncio(9, "Teste", 567, "carambola_foreground", "01-02-2024", "01-05-2024", 43F, 1, null, null, null, null, null))
 
         setContent {
             MainView(true, usuarioDAO.getAll(), db)
