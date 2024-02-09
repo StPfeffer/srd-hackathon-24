@@ -1,5 +1,7 @@
 package com.hortis.hackathon24
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,6 +29,10 @@ import com.hortis.hackathon24.database.AppDatabase
 import com.hortis.hackathon24.viewmodel.HomeViewModel
 import com.hortis.hackathon24.views.Announcements
 import com.hortis.hackathon24.views.HomeScreen
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
 
@@ -42,7 +48,7 @@ class MainActivity : ComponentActivity() {
 
         val viewModel by viewModels<HomeViewModel>()
 
-//
+
 //        val usuarioDAO: UsuarioDAO = db.usuarioDAO()
 //
 //        usuarioDAO.insertAll(Usuario(1, "nome1"), Usuario(2, "nome2"))
@@ -54,17 +60,19 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 //            MainView(true, db, viewModel)
-            MainView(true, viewModel)
+            MainView(true, viewModel, application)
         }
     }
 }
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainView(
     isProducer: Boolean = false,
 //    db: AppDatabase,
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
+    context: Context
 ) {
 
     val listOfUsuarios by homeViewModel.listOfUsuario.collectAsState()
