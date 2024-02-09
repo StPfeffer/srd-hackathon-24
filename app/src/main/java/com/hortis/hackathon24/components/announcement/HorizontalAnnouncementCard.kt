@@ -21,10 +21,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,10 +37,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.hortis.hackathon24.R
+import com.hortis.hackathon24.entity.Anuncio
 
 @Composable
 fun HorizontalAnnouncementCard(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    anuncio: Anuncio
 ) {
     Box(
         modifier = modifier
@@ -80,7 +86,8 @@ fun HorizontalAnnouncementCard(
                                     modifier = Modifier
                                         .fillMaxSize()
                                         .clip(shape = CircleShape)
-                                        .background(color = Color(0xff033f63)))
+                                        .background(color = Color(0xff033f63))
+                                )
                                 Text(
                                     text = "A",
                                     color = Color(0xfff2f2f2),
@@ -89,13 +96,17 @@ fun HorizontalAnnouncementCard(
                                     style = TextStyle(
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.Medium,
-                                        letterSpacing = 0.15.sp),
+                                        letterSpacing = 0.15.sp
+                                    ),
                                     modifier = Modifier
                                         .align(alignment = Alignment.Center)
-                                        .offset(x = 0.dp,
-                                            y = 0.dp)
+                                        .offset(
+                                            x = 0.dp,
+                                            y = 0.dp
+                                        )
                                         .requiredSize(size = 40.dp)
-                                        .wrapContentHeight(align = Alignment.CenterVertically))
+                                        .wrapContentHeight(align = Alignment.CenterVertically)
+                                )
                             }
                             Column(
                                 verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.Top),
@@ -103,25 +114,46 @@ fun HorizontalAnnouncementCard(
                                     .fillMaxWidth()
                             ) {
                                 Text(
-                                    text = "Header",
+                                    text = anuncio.produto,
                                     color = Color(0xff151515),
                                     lineHeight = 1.5.em,
                                     style = TextStyle(
-                                        fontSize = 16.sp,
+                                        fontSize = 18.sp,
                                         fontWeight = FontWeight.Medium,
-                                        letterSpacing = 0.15.sp),
+                                        letterSpacing = 0.15.sp
+                                    ),
                                     modifier = Modifier
-                                        .fillMaxWidth())
-                                Text(
-                                    text = "Subhead",
-                                    color = Color(0xff151515),
-                                    textAlign = TextAlign.Center,
-                                    lineHeight = 1.43.em,
-                                    style = TextStyle(
-                                        fontSize = 14.sp,
-                                        letterSpacing = 0.25.sp),
-                                    modifier = Modifier
-                                        .requiredWidth(width = 57.dp))
+                                        .fillMaxWidth()
+                                )
+
+                                Row {
+                                    Text(
+                                        text = anuncio.quantidade.toString() + " Kg",
+                                        color = Color(0xff151515),
+                                        textAlign = TextAlign.Left,
+                                        lineHeight = 1.43.em,
+                                        style = TextStyle(
+                                            fontSize = 14.sp,
+                                            letterSpacing = 0.25.sp
+                                        ),
+                                        modifier = Modifier
+                                            .requiredWidth(width = 37.dp)
+                                    )
+
+                                    Text(
+                                        text = "R$ " + anuncio.preco.toString(),
+                                        color = Color(0xff151515),
+                                        textAlign = TextAlign.Right,
+                                        lineHeight = 1.43.em,
+                                        style = TextStyle(
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 18.sp,
+                                            letterSpacing = 0.25.sp
+                                        ),
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                    )
+                                }
                             }
                         }
                         Box(
@@ -129,11 +161,22 @@ fun HorizontalAnnouncementCard(
                                 .fillMaxHeight()
                                 .requiredWidth(width = 80.dp)
                         ) {
+                            val context = LocalContext.current
+                            val drawableId = remember(anuncio.imagem) {
+                                context.resources.getIdentifier(
+                                    anuncio.imagem,
+                                    "mipmap",
+                                    context.packageName
+                                )
+                            }
+
                             Image(
-                                painter = painterResource(id = R.mipmap.ic_launcher_foreground),
+                                painter = painterResource(id = drawableId),
                                 contentDescription = "media",
                                 modifier = Modifier
-                                    .fillMaxSize())
+                                    .fillMaxSize()
+                                    .scale(1.1f)
+                            )
                         }
                     }
                 }

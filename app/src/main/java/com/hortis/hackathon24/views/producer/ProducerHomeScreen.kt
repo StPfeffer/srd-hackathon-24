@@ -14,13 +14,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.hortis.hackathon24.components.announcement.HorizontalAnnouncementCard
+import com.hortis.hackathon24.components.notfound.NotFound
 import com.hortis.hackathon24.components.seemore.SeeMore
 import com.hortis.hackathon24.components.text.Title
+import com.hortis.hackathon24.dao.AnuncioDAO
+import com.hortis.hackathon24.database.AppDatabase
 
 @Composable
 fun ProducerHomeScreen(
     modifier: Modifier = Modifier,
-    paddingValues: PaddingValues
+    paddingValues: PaddingValues,
+    db: AppDatabase
 ) {
     ConstraintLayout {
         val (topImg, profile) = createRefs()
@@ -41,16 +45,31 @@ fun ProducerHomeScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                for (i in 0..2) {
-                    HorizontalAnnouncementCard()
-                    Spacer(
-                        modifier.padding(top = 8.dp)
-                    )
-                }
+                val anuncioDAO: AnuncioDAO = db.anuncioDAO()
+                val anuncios = anuncioDAO.getAll()
 
-                SeeMore(
-                    text = "Ver mais compromissos"
-                )
+                if (anuncios.isEmpty()) {
+                    NotFound(text = "Não foram encontrados compromissos")
+                } else {
+                    var i = 0
+                    for (anuncio in anuncios) {
+                        HorizontalAnnouncementCard(anuncio = anuncio)
+
+                        Spacer(
+                            modifier.padding(top = 8.dp)
+                        )
+
+                        i++
+
+                        if (i == 3) {
+                            SeeMore(
+                                text = "Ver mais compromissos"
+                            )
+
+                            break
+                        }
+                    }
+                }
             }
 
             Title(text = "Anúncios abertos")
@@ -63,10 +82,10 @@ fun ProducerHomeScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 for (i in 0..2) {
-                    HorizontalAnnouncementCard()
-                    Spacer(
-                        modifier.padding(top = 8.dp)
-                    )
+//                    HorizontalAnnouncementCard(null)
+//                    Spacer(
+//                        modifier.padding(top = 8.dp)
+//                    )
                 }
 
                 SeeMore(
