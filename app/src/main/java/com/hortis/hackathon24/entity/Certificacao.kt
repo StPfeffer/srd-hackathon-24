@@ -8,7 +8,7 @@ import java.util.GregorianCalendar
 
 @Entity(tableName = "certificacao")
 data class Certificacao(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(true) val id: Int?,
     @ColumnInfo(name = "nome") val nome: String,
     @ColumnInfo(name = "validade") val validade: Calendar
 ) {}
