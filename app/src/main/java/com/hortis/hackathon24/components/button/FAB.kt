@@ -9,7 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import com.hortis.hackathon24.R
 
 @Composable
 fun FAB(
@@ -36,7 +38,7 @@ fun FAB(
                 tint = Color.White
             )
         },
-        containerColor = Color(parseColor("#033F63"))
+        containerColor = Color(parseColor(stringResource(R.string.azul_primario)))
     )
 
 }

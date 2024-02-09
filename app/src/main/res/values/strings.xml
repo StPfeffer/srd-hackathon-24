@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Hortis</string>
     <string name="placeholder_search">Pesquisar…</string>
+    <string name="azul_primario">#033F63</string>
 </resources>

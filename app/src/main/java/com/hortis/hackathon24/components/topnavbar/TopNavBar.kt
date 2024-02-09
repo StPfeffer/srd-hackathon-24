@@ -2,7 +2,10 @@ package com.hortis.hackathon24.components.topnavbar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -12,7 +15,10 @@ import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -25,11 +31,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import com.hortis.hackathon24.R
 import com.hortis.hackathon24.components.logo.Logo
 
@@ -128,9 +135,9 @@ fun TopNavBar(
                     )
                 },
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
-                    unfocusedContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
-                    disabledContainerColor = Color(android.graphics.Color.parseColor("#033F63")),
+                    focusedContainerColor = Color(android.graphics.Color.parseColor(stringResource(R.string.azul_primario))),
+                    unfocusedContainerColor = Color(android.graphics.Color.parseColor(stringResource(R.string.azul_primario))),
+                    disabledContainerColor = Color(android.graphics.Color.parseColor(stringResource(R.string.azul_primario))),
                 ),
             )
         }

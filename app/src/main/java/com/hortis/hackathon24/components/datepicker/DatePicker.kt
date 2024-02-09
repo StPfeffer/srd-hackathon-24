@@ -22,7 +22,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.hortis.hackathon24.R
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -74,7 +76,7 @@ fun DatePicker(
             .heightIn(min = 56.dp)
             .border(
                 width = 1.dp,
-                color = Color(parseColor("#033F63")),
+                color = Color(parseColor(stringResource(R.string.azul_primario))),
                 shape = RoundedCornerShape(8.dp)
             )
             .padding(

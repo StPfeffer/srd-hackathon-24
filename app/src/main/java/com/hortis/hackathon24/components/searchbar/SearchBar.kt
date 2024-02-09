@@ -50,9 +50,9 @@ fun SearchBar(
             )
         },
         colors = TextFieldDefaults.colors(
-            focusedContainerColor = Color(parseColor("#033F63")),
-            unfocusedContainerColor = Color(parseColor("#033F63")),
-            disabledContainerColor = Color(parseColor("#033F63")),
+            focusedContainerColor = Color(parseColor(stringResource(R.string.azul_primario))),
+            unfocusedContainerColor = Color(parseColor(stringResource(R.string.azul_primario))),
+            disabledContainerColor = Color(parseColor(stringResource(R.string.azul_primario))),
         ),
         modifier = modifier
             .fillMaxWidth()
