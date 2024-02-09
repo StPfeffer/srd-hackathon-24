@@ -32,7 +32,7 @@ fun BottomNavBar(
                 navController.navigate("home")
             }) {
                 Icon(
-                    painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
+                    painter = painterResource(id = R.drawable.home),
                     contentDescription = ""
                 )
             }
@@ -43,7 +43,7 @@ fun BottomNavBar(
                 }
             }) {
                 Icon(
-                    painter = painterResource(id = R.drawable.baseline_bluetooth_searching_24),
+                    painter = painterResource(id = R.drawable.anuncios),
                     contentDescription = ""
                 )
             }

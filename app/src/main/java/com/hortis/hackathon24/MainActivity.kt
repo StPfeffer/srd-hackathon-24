@@ -48,6 +48,7 @@ import com.hortis.hackathon24.components.topNavBar.TopNavBar
 import com.hortis.hackathon24.views.Announcements
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
