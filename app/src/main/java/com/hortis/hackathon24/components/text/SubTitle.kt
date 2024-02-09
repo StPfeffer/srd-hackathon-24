@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Title(
+fun SubTitle(
     modifier: Modifier = Modifier,
     text: String,
     pStart: Dp = 24.dp,
@@ -22,8 +22,8 @@ fun Title(
 ) {
     Text(
         text = text,
-        fontSize = 22.sp,
-        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.SemiBold,
         color = Color(parseColor("#151515")),
         modifier = Modifier
             .padding(

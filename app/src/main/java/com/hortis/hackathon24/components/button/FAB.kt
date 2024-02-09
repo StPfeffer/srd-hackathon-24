@@ -9,14 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavHostController
 
 @Composable
 fun FAB(
     modifier: Modifier = Modifier,
-    text: String
+    text: String,
+    navController: NavHostController
 ) {
 
-    val onClick = { /* Do something */ }
+    val onClick = { navController.navigate("create_announcement") }
 
     ExtendedFloatingActionButton(
         text = {
