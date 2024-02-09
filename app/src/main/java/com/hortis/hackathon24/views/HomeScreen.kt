@@ -10,10 +10,11 @@ import com.hortis.hackathon24.views.producer.ProducerHomeScreen
 fun HomeScreen(
     paddingValues: PaddingValues,
     isProducer: Boolean,
-    db: AppDatabase
+//    db: AppDatabase
 ) {
     if (isProducer) {
-        ProducerHomeScreen(paddingValues = paddingValues, db = db)
+//        ProducerHomeScreen(paddingValues = paddingValues, db = db)
+        ProducerHomeScreen(paddingValues = paddingValues)
     } else {
         MarketHomeScreen(paddingValues = paddingValues)
     }

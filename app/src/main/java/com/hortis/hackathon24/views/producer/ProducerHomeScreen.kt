@@ -24,7 +24,7 @@ import com.hortis.hackathon24.database.AppDatabase
 fun ProducerHomeScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    db: AppDatabase
+//    db: AppDatabase
 ) {
     ConstraintLayout {
         val (topImg, profile) = createRefs()
@@ -45,31 +45,31 @@ fun ProducerHomeScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val anuncioDAO: AnuncioDAO = db.anuncioDAO()
-                val anuncios = anuncioDAO.getAll()
-
-                if (anuncios.isEmpty()) {
-                    NotFound(text = "Não foram encontrados compromissos")
-                } else {
-                    var i = 0
-                    for (anuncio in anuncios) {
-                        HorizontalAnnouncementCard(anuncio = anuncio)
-
-                        Spacer(
-                            modifier.padding(top = 8.dp)
-                        )
-
-                        i++
-
-                        if (i == 3) {
-                            SeeMore(
-                                text = "Ver mais compromissos"
-                            )
-
-                            break
-                        }
-                    }
-                }
+//                val anuncioDAO: AnuncioDAO = db.anuncioDAO()
+//                val anuncios = anuncioDAO.getAll()
+//
+//                if (anuncios.isEmpty()) {
+//                    NotFound(text = "Não foram encontrados compromissos")
+//                } else {
+//                    var i = 0
+//                    for (anuncio in anuncios) {
+//                        HorizontalAnnouncementCard(anuncio = anuncio)
+//
+//                        Spacer(
+//                            modifier.padding(top = 8.dp)
+//                        )
+//
+//                        i++
+//
+//                        if (i == 3) {
+//                            SeeMore(
+//                                text = "Ver mais compromissos"
+//                            )
+//
+//                            break
+//                        }
+//                    }
+//                }
             }
 
             Title(text = "Anúncios abertos")

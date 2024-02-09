@@ -1,20 +1,30 @@
 package com.hortis.hackathon24.components.bottomnavbar
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hortis.hackathon24.R
 
 @Composable
 fun BottomNavBar(
-    navController : NavController
+    navController: NavController
 ) {
     BottomAppBar(
         containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -22,26 +32,50 @@ fun BottomNavBar(
     ) {
 
 
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Button(onClick = {
-                navController.navigate("home")
-            }) {
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Button(modifier = Modifier.padding(start = 10.dp, end = 10.dp)
+                .background(Color(android.graphics.Color.TRANSPARENT)),
+                onClick = {
+                    navController.navigate("home")
+                }) {
                 Icon(
-                    painter = painterResource(id = R.drawable.home),
-                    contentDescription = "Início"
+                    Icons.Filled.Home,
+                    contentDescription = "Início",
+                    modifier = Modifier.size(40.dp)
                 )
             }
 
-            Button(onClick = {
-                navController.navigate("announcements") {
-                    launchSingleTop = true
-                }
-            }) {
+            Button(modifier = Modifier.padding(start = 10.dp, end = 10.dp).background(Color(android.graphics.Color.TRANSPARENT)),
+                onClick = {
+                    navController.navigate("announcements") {
+                        launchSingleTop = true
+                    }
+                }) {
                 Icon(
-                    painter = painterResource(id = R.drawable.anuncios),
-                    contentDescription = "Anúncios"
+                    Icons.Filled.List,
+                    contentDescription = "Anúncios",
+                    modifier = Modifier.size(40.dp)
                 )
             }
+
+            Button(modifier = Modifier
+                .padding(start = 10.dp, end = 10.dp)
+                .background(Color(android.graphics.Color.TRANSPARENT)),
+                onClick = {
+                    navController.navigate("announcements") {
+                        launchSingleTop = true
+                    }
+                }) {
+                Icon(
+                    Icons.Filled.DateRange,
+                    contentDescription = "Contratos",
+                    modifier = Modifier.size(40.dp)
+                )
+            }
+
         }
     }
 }
